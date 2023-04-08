@@ -1,0 +1,12 @@
+.calculator-button {
+  font-size: 2rem;
+
+  border: 1px solid black;
+  background-color: gainsboro;
+
+}
+
+
+.calculator-button:hover {
+  background-color: rgb(200, 200, 200);
+}
