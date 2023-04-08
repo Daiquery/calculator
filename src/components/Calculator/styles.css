@@ -1,10 +1,17 @@
 .calculator__controls {
     display: grid;
   grid-template-rows: 50px 50px 50px 50px;
-  grid-template-columns: 60px 60px 60px 60px;
+  grid-template-columns: 75px 75px 75px 50px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 5px #000;
+}
+
+.calculator__ans {
+  border: 3px rgb(0, 0, 0, 0.2) solid;
+}
+.calculator__ans h1 {
+  font-size: 4rem;
 }

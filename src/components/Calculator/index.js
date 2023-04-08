@@ -3,7 +3,6 @@ import { useState } from "react";
 import CalculatorButton from "../CalculatorButton";
 
 const Calculator = () => {
-  const [calcMode, setCalcMode] = useState(""); // add substract multiply divide
   const [mathBtns, setMathBtns] = useState([
     "7",
     "8",
@@ -22,16 +21,26 @@ const Calculator = () => {
     "=",
     "+",
   ]);
+  
   const [evalArr, setEvalArr] = useState([]);
   const [currAnswer, setCurrAnswer] = useState(0);
   const [prevAnswer, setPrevAnswer] = useState();
 
+  const handleReset = () => {
+    setPrevAnswer(null);
+    setCurrAnswer(0);
+    setEvalArr([]); 
+  }
+
   const handleCalc = (value) => {
-    if(evalArr.length === 0 && isNaN(value)) {
+    let newEvalArr = [...evalArr];
+    let newVal;
+
+    if(evalArr.length === 0 && isNaN(value) || isNaN(value) && isNaN(newEvalArr[newEvalArr.length - 1])) {
       console.log("Number is needed first.")
       return;
     }
-    let newVal;
+
     switch (value) {
       case "+":
         newVal = "+"
@@ -46,23 +55,33 @@ const Calculator = () => {
         newVal = "/"
         break;
       case "=":
-        console.log("equal")
+        if(!isNaN(newEvalArr[newEvalArr.length - 1])){{handleAnswer(newEvalArr)}}
        return;
         
-
       default:
         newVal = value;
     }
-    let newEvalArr = [...evalArr, newVal];
+    newEvalArr = [...evalArr, newVal];
     console.log(newEvalArr);
 
 
     setEvalArr(newEvalArr);
   };
 
+  const handleAnswer = (arr) => {
+    setPrevAnswer(currAnswer);
+    setCurrAnswer(eval(arr.join('')));
+    setEvalArr([]);
+  }
+
+
   return (
     <div className="calculator">
-      <h1 className="calculator__ans">{currAnswer}</h1>
+      <h3>{prevAnswer}</h3>
+      <div className="calculator__ans">
+        <h1>{currAnswer}</h1>
+        <h3>{evalArr.join('')}</h3>
+        </div>
       <div className="calculator__controls">
         {/* make calculator button components */}
         {mathBtns.map((val, i) => {
