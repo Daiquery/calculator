@@ -1,12 +1,20 @@
 .calculator-button {
   font-size: 2rem;
-
-  border: 1px solid black;
-  background-color: rgba(137, 137, 137, 0.2)
-
+  border-radius: 10px;
+  background-color: rgba(154, 154, 154, 0.715);
+  text-align:center;
+  box-shadow: 0 0 5px #000;
 }
 
+.calculator-button--red {
+  background-color: rgba(216, 0, 0, 0.715);
+}
 
 .calculator-button:hover {
   background-color: rgba(137, 137, 137, 0.4)
+}
+
+
+.calculator-button--red:hover {
+  background-color: rgba(149, 0, 0, 0.715);
 }
